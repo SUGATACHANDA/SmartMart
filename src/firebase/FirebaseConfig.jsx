@@ -8,7 +8,7 @@ import { getAuth } from "firebase/auth"
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyB5XSNl_5XVrKqLJaKDWpg4j0MmZsSD5ZE",
-  authDomain: "smartmart-web.firebaseapp.com",
+  authDomain: "smart-mart-com.vercel.app",
   projectId: "smartmart-web",
   storageBucket: "smartmart-web.appspot.com",
   messagingSenderId: "745456694762",

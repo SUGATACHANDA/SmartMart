@@ -4,7 +4,7 @@ import myContext from '../../context/data/myContext'
 function Filter() {
     const context = useContext(myContext)
     const { mode, searchkey, setSearchkey, filterType, setFilterType,
-        filterPrice, setFilterPrice, product } = context
+        filterPrice, setFilterPrice, product, clearSearch } = context
     return (
         <div className=' container mx-auto px-4 mt-5 '>
             <div className="p-5 rounded-lg bg-gray-100 drop-shadow-xl border border-gray-200
@@ -28,7 +28,7 @@ function Filter() {
                     {/* <p className="font-medium">
                         Filters
                     </p> */}
-                    <button className="px-4 py-2 bg-gray-50hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md" style={{ color: mode === 'dark' ? 'white' : '' }}>
+                    <button onClick={clearSearch} className="px-4 py-2 bg-gray-50hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md" style={{ color: mode === 'dark' ? 'white' : '' }}>
                         Reset Filter
                     </button>
                 </div>
