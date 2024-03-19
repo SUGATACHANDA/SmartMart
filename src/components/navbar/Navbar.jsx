@@ -146,9 +146,9 @@ export default function Navbar() {
                     All Products
                   </Link>
                   
-                  {user ? <Link to={'/order'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                  {user ? "" : <Link to={'/order'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
                     Order
-                  </Link> : ""}
+                  </Link>}
 
                   {user?.user?.email === 'sugatachanda.cse2022@nsec.ac.in'?
                    <Link to={'/dashboard'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
