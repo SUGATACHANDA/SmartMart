@@ -20,7 +20,7 @@ function App() {
     <MyState>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/order" element={<Order/>} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/allproducts" element={<Allproducts />} />          
