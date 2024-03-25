@@ -44,7 +44,7 @@ function Order() {
         </>)
         :
         (
-          <div className='flex justify-center'>
+          <div className='flex justify-center pt-10 pb-10'>
             <img src="https://grocerycart.wawbizstores.com/assets/images/no_order1.png" alt="No Orders Found" />
           </div>
         )
