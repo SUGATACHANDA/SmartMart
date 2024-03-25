@@ -44,7 +44,9 @@ function Order() {
         </>)
         :
         (
-          <h2 className=' text-center tex-2xl text-black'>Not Order</h2>
+          <div className='flex justify-center'>
+            <img src="https://grocerycart.wawbizstores.com/assets/images/no_order1.png" alt="No Orders Found" />
+          </div>
         )
 
       }

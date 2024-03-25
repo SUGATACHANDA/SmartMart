@@ -6,7 +6,7 @@ export default function Modal({name, address, pincode, phoneNumber, setName, set
     let [isOpen, setIsOpen] = useState(false)
 
     function closeModal() {
-        setIsOpen(false)
+        setIsOpen(false);
     }
 
     function openModal() {
@@ -82,7 +82,7 @@ export default function Modal({name, address, pincode, phoneNumber, setName, set
 
                                                     </form>
                                                     
-                                                    <button onClick={()=>{buyNow(); closeModal(); clearCart}} type="button" className="focus:outline-none w-full text-white bg-violet-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 ">Order Now</button>
+                                                    <button onClick={()=>{buyNow(); closeModal()}} type="button" className="focus:outline-none w-full text-white bg-violet-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 ">Order Now</button>
                                                 </div>
                                             </div>
                                         </div>

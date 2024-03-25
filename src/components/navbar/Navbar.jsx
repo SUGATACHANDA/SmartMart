@@ -18,7 +18,7 @@ export default function Navbar() {
   const logout = () => {
     localStorage.clear('user')
     alert('Logout Successfull')
-    window.location.href = "/login"
+    window.location.href = "/"
   }
   const cartItems = useSelector((state)=> state.cart)
 
@@ -67,9 +67,9 @@ export default function Navbar() {
                     All Products
                   </Link>
                   <div className="flow-root">
-                    <Link to={'/order'} style={{ color: mode === 'dark' ? 'white' : '', }} className="-m-2 block p-2 font-medium text-gray-900">
-                      Order
-                    </Link>
+                  {user ? <Link to={'/order'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                    Order
+                  </Link> : ""}
                   </div>
 
                   {user?.user?.email === 'sugatachanda.cse2022@nsec.ac.in' ? <div className="flow-root">
@@ -82,7 +82,9 @@ export default function Navbar() {
                     <a onClick={logout} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
                       Logout
                     </a>
-                  </div> : ""}
+                  </div> : <Link to={'/login'} className="text-sm font-medium text-gray-700 cursor-pointer  " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                    Login
+                  </Link>}
                   {/* <div className="flow-root">
                     <Link to={'/'} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer">
                       <img
@@ -146,9 +148,9 @@ export default function Navbar() {
                     All Products
                   </Link>
                   
-                  {user ? "" : <Link to={'/order'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                  {user ? <Link to={'/order'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
                     Order
-                  </Link>}
+                  </Link> : ""}
 
                   {user?.user?.email === 'sugatachanda.cse2022@nsec.ac.in'?
                    <Link to={'/dashboard'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
