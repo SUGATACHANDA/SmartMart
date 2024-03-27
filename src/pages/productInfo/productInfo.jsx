@@ -7,6 +7,8 @@ import { doc, getDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { addToCart } from '../../redux/cartSlice';
 import { firedb } from '../../firebase/FirebaseConfig';
+import 'react-toastify/dist/ReactToastify.css';
+import Loader from '../../components/loader/Loader'
 
 function ProductInfo() {
     const context = useContext(myContext);
@@ -45,7 +47,7 @@ function ProductInfo() {
     // add to cart
     const addCart = (products) => {
         dispatch(addToCart(products))
-        alert('Added to Cart');
+        toast.success('Added to Cart', {autoClose:2000});
     }
 
     useEffect(() => {
@@ -57,6 +59,7 @@ function ProductInfo() {
 
     return (
         <Layout>
+            {loading && <Loader />}
             <section className="text-gray-600 body-font overflow-hidden">
                 <div className="container px-5 py-10 mx-auto">
                     {products && 

@@ -6,10 +6,12 @@ import { MdOutlineProductionQuantityLimits } from 'react-icons/md'
 import { FaUser, FaCartPlus } from 'react-icons/fa';
 import { AiFillShopping, AiFillPlusCircle, AiFillDelete } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import Loader from '../../../components/loader/Loader';
+
 
 function DashboardTab() {
     const context = useContext(myContext)
-    const { mode, product, edithandle, deleteProduct, order, user } = context
+    const { mode, product, edithandle, deleteProduct, order, user, loading } = context
 
     // console.log(product)
     let [isOpen, setIsOpen] = useState(false)
@@ -27,6 +29,7 @@ function DashboardTab() {
     }
     return (
         <>
+        {loading && <Loader />}
             <div className="container mx-auto">
                 <div className="tab container mx-auto ">
                     <Tabs defaultIndex={0} className=" " >

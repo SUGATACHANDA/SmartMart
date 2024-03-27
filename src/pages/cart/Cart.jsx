@@ -7,6 +7,9 @@ import { deleteFromCart } from "../../redux/cartSlice";
 import { useEffect } from "react";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
 import { firedb } from "../../firebase/FirebaseConfig";
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce, toast } from "react-toastify";
+import Loader from '../../components/loader/Loader'
 
 function Cart() {
   const context = useContext(myContext);
@@ -16,7 +19,7 @@ function Cart() {
 
   const deleteCart = (item) => {
     dispatch(deleteFromCart(item));
-    alert("Item deleted Successfully");
+    toast.success("Item deleted Successfully", {autoClose:2000});
   }
 
   useEffect(() => {
@@ -53,7 +56,7 @@ function Cart() {
 
   const buyNow = async () => {
     if (name === "" || address == "" || pincode == "" || phoneNumber == "") {
-      return alert("All Fields are required");
+      return toast.info("All Fields are required");
     }
 
 
@@ -80,12 +83,19 @@ function Cart() {
 
       handler: function (response) {
         console.log(response); 
-        alert("Payment Successful");
+        toast.success("Payment Successful", {autoClose:5000,transition:Bounce});
         setTimeout(() => {
           window.location.reload(true);
         localStorage.removeItem("cart");
-        window.location.href= "/order"
-        }, 1000);
+        window.location.href= '/order'
+        }, 8000);
+        // if (typeof response.razorpay_payment_id == 'undefined' || response.razorpay_payment_id < 1) {
+        //   redirect_url = '/*'
+        // }
+        // else{
+        //   redirect_url = '/success'
+        // }
+
         
 
         const paymentId = response.razorpay_payment_id;
@@ -282,7 +292,7 @@ function Cart() {
                 </p>
               </div>              
             </div>
-            <p className='text-black' style={{ color: mode === 'dark' ? 'white' : '' }}><strong>NB</strong>: Please clear the cart after <strong>Successfull Payment</strong> to avoid any future confusions</p>
+            {/* <p className='text-black' style={{ color: mode === 'dark' ? 'white' : '' }}><strong>NB</strong>: Please clear the cart after <strong>Successfull Payment</strong> to avoid any future confusions</p> */}
             <Modal
               name={name}
               address={address}

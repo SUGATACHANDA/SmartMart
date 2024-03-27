@@ -5,11 +5,14 @@ import Layout from '../../components/layout/Layout'
 import myContext from '../../context/data/myContext'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../redux/cartSlice'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import Loader from '../../components/loader/Loader'
 
 function Allproducts() {
   const context = useContext(myContext)
   const { mode, product ,searchkey, setSearchkey,filterType,setFilterType,
-      filterPrice,setFilterPrice} = context
+      filterPrice,setFilterPrice, loading} = context
 
   const dispatch = useDispatch()
   const cartItems = useSelector((state)=> state.cart);
@@ -17,7 +20,7 @@ function Allproducts() {
 
   const addCart = (product)=> {
       dispatch(addToCart(product));
-      alert('Added to cart');
+      toast.success('Added to cart');
 
   }
 
@@ -30,6 +33,7 @@ function Allproducts() {
 
   return (
     <Layout>
+        {loading && <Loader />}
       <Filter/>
       <section className="text-gray-600 body-font">
             <div className="container px-5 py-8 md:py-16 mx-auto">

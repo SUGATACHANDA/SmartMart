@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import { addToCart, deleteFromCart } from '../../redux/cartSlice'
 import { Navigate } from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css';
 
 function ProductCard() {
     const context = useContext(myContext)
@@ -18,7 +19,7 @@ function ProductCard() {
     // add to cart
     const addCart = (product) => {
         dispatch(addToCart(product))
-        alert('Added to Cart');
+        toast.success('Added to Cart');
     }
 
     useEffect(() => {

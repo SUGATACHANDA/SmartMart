@@ -19,11 +19,11 @@ function Login() {
       try {
         const result = await signInWithEmailAndPassword(auth, email, password)
         localStorage.setItem('user',JSON.stringify(result));
-        alert('SignIn Successfull');
+        alert('Login Successfull');
         window.location.href='/'
         setLoading(false);
       } catch (error) {
-        alert('SignIn Failed');
+        alert('Login Failed');
         setEmail('');
         setPassword('');
         setLoading(false);

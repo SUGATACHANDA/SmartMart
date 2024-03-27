@@ -125,7 +125,7 @@ function myState(props) {
         setLoading(true)
         try {
             await deleteDoc(doc(firedb, 'products', item.id))
-            toast.success('Product Deleted successfully')
+            alert('Product Deleted successfully')
             getProductData();
             setLoading(false)
         } catch (error) {
@@ -140,7 +140,7 @@ function myState(props) {
     const getOrderData = async () => {
         setLoading(true)
         try {
-            const result = await getDocs(collection(firedb, "order"))
+            const result = await getDocs(query(collection(firedb, "order"), orderBy('date', 'desc')))
             const ordersArray = [];
             result.forEach((doc) => {
                 ordersArray.push(doc.data());

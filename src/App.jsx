@@ -15,6 +15,8 @@ import UpdateProduct from "./pages/admin/pages/UpdateProduct";
 import { ToastContainer } from "react-toastify";
 import Allproducts from "./pages/allProducts/allProduct";
 import PageNotFound from "./pages/nopage/NoPage";
+import Success from "./pages/successPage/Success";
+import PaymentSuccess from "./pages/successPage/Success";
 function App() {
   return (
     <MyState>
@@ -26,6 +28,7 @@ function App() {
           <Route path="/allproducts" element={<Allproducts />} />          
           <Route path="/dashboard" element={<ProtectedRoutesForAdmin><Dashboard/></ProtectedRoutesForAdmin>} />
           <Route path="/login" element={<Login />} />
+          <Route path="/success" element={<PaymentSuccess />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/productinfo/:id" element={<ProductInfo />} />
           <Route path="/addproduct" element={<ProtectedRoutesForAdmin><AddProduct /></ProtectedRoutesForAdmin>} />

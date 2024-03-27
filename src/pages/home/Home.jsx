@@ -8,9 +8,12 @@ import Testimonial from "../../components/testimonials/Testimonial";
 import Track from "../../components/track/Track";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, deleteFromCart } from "../../redux/cartSlice";
+import Loader from '../../components/loader/Loader'
 function Home() {
   const dispatch = useDispatch();
   const cartItem = useSelector((state) => state.cart);
+  const context = useContext(myContext);
+  const {loading } = context;
   // const addCart = () => {
   //   dispatch(addToCart("shirt"));
   // };
@@ -22,14 +25,15 @@ function Home() {
     <Layout>
       {/* <div className="flex gap-5 justify-center">
         <button className="bg-gray-300 p-5" onClick={() => addCart()}>
-          Add
+        Add
         </button>
         <button className="bg-gray-300 p-5" onClick={() => deleteCart()}>
-          Delete
+        Delete
         </button>
       </div> */}
       <HeroSection />
       <Filter />
+      {loading && <Loader />}
       <ProductCard />
       <Testimonial />
       <Track />
