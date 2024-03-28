@@ -83,12 +83,12 @@ function Cart() {
 
       handler: function (response) {
         console.log(response); 
-        toast.success("Payment Successful", {autoClose:5000,transition:Bounce});
+        toast.success("Payment Successful. Redirecting to Order Page...", {autoClose:5000,transition:Bounce});
         setTimeout(() => {
           window.location.reload(true);
         localStorage.removeItem("cart");
         window.location.href= '/order'
-        }, 8000);
+        }, 6000);
         // if (typeof response.razorpay_payment_id == 'undefined' || response.razorpay_payment_id < 1) {
         //   redirect_url = '/*'
         // }
