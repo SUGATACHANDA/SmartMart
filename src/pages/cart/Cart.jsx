@@ -5,13 +5,13 @@ import Modal from "../../components/modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFromCart } from "../../redux/cartSlice";
 import { useEffect } from "react";
-import { Timestamp, addDoc, collection } from "firebase/firestore";
-import { firedb } from "../../firebase/FirebaseConfig";
+import { Timestamp, addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { auth, firedb } from "../../firebase/FirebaseConfig";
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce, toast } from "react-toastify";
 import Loader from '../../components/loader/Loader'
 
-function Cart() {
+ function Cart() {
   const context = useContext(myContext);
   const { mode, user, loading } = context;
   const cartItems = useSelector((state) => state.cart);
@@ -25,6 +25,9 @@ function Cart() {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   
 
@@ -40,7 +43,10 @@ function Cart() {
   }, [cartItems]);
 
   // const shipping = parseInt();
+
+  
   let shipping = 0;
+
   if (totalAmount === 0 || totalAmount > 1000) {
     shipping = parseInt(0);
   } else {
@@ -56,7 +62,7 @@ function Cart() {
 
   const buyNow = async () => {
     if (name === "" || address == "" || pincode == "" || phoneNumber == "") {
-      return toast.info("All Fields are required");
+      return toast.warning("All Fields are required");
     }
 
 
@@ -83,11 +89,11 @@ function Cart() {
 
       handler: function (response) {
         console.log(response); 
-        toast.success("Payment Successful. Redirecting to Order Page...", {autoClose:5000,transition:Bounce});
+        toast.success("Payment Successful. Redirecting to Order Confirmation Page...", {autoClose:5000,transition:Bounce,closeButton: false, pauseOnHover:false });
         setTimeout(() => {
           window.location.reload(true);
         localStorage.removeItem("cart");
-        window.location.href= '/order'
+        window.location.href= `/orderconfirmation/${paymentId}`
         }, 6000);
         // if (typeof response.razorpay_payment_id == 'undefined' || response.razorpay_payment_id < 1) {
         //   redirect_url = '/*'
@@ -134,33 +140,7 @@ function Cart() {
     var pay = new window.Razorpay(options);
     pay.open();
     console.log(pay);   
-  };
-  // window.location.reload;
-  // localStorage.removeItem("cart")
-  // function reloadPage() {
-  //   // The last "domLoading" Time //
-  //   var currentDocumentTimestamp =
-  //   new Date(performance.timing.domLoading).getTime();
-  //   // Current Time //
-  //   var now = Date.now();
-  //   // Ten Seconds //
-  //   var tenSec = 20 * 2000;
-  //   // Plus Ten Seconds //
-  //   var plusTenSec = currentDocumentTimestamp + tenSec;
-  //   if (now > plusTenSec) {
-  //   location.reload();
-  //   localStorage.removeItem("cart")
-  //   } else {}
-  //  }
-  //  reloadPage();
-  // window.location.reload(true);
-  // localStorage.removeItem("cart");
-  // window.location.href= "/order"
- 
-  
-
-  
-  
+  }; 
   
   
 

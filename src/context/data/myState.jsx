@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import MyContext from './myContext'
-import { Timestamp, addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query, setDoc } from 'firebase/firestore';
+import { Timestamp, addDoc, collection, deleteDoc, doc, getDocs, getDocsFromServer, onSnapshot, orderBy, query, setDoc } from 'firebase/firestore';
 import { firedb } from '../../firebase/FirebaseConfig';
 
 function myState(props) {
@@ -140,7 +140,7 @@ function myState(props) {
     const getOrderData = async () => {
         setLoading(true)
         try {
-            const result = await getDocs(query(collection(firedb, "order"), orderBy('date', 'desc')))
+            const result = await getDocsFromServer(query(collection(firedb, "order"), orderBy('date', 'desc')))
             const ordersArray = [];
             result.forEach((doc) => {
                 ordersArray.push(doc.data());
@@ -160,7 +160,7 @@ function myState(props) {
     const getUserData = async () => {
         setLoading(true)
         try {
-            const result = await getDocs(collection(firedb, "users"))
+            const result = await getDocsFromServer(query(collection(firedb, "users"), orderBy('isPlatinum', 'desc')))
             const usersArray = [];
             result.forEach((doc) => {
                 usersArray.push(doc.data());

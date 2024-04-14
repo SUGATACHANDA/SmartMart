@@ -9,6 +9,7 @@ const PaymentSuccess = () => {
       </svg>
       <h1 className="text-3xl font-bold text-gray-800">Payment Successful!</h1>
       <p className="text-gray-600 text-lg mt-4">Your payment has been processed successfully.</p>
+      <p className="text-gray-600 text-lg mt-2">Your order will be dispatched soon.</p>
       <Link to={'/'} className="mt-8 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400">
         Continue Shopping
       </Link>

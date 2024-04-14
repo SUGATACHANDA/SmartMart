@@ -6,6 +6,7 @@ import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.jsx";
 import SplashScreen from "./SplashScreen.jsx";
+import ProgressBar from "./SplashScreen.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

@@ -5,6 +5,7 @@ function Filter() {
     const context = useContext(myContext)
     const { mode, searchkey, setSearchkey, filterType, setFilterType,
         filterPrice, setFilterPrice, product, clearSearch } = context
+        
     return (
         <div className=' container mx-auto px-4 mt-5 '>
             <div className="p-5 rounded-lg bg-gray-100 drop-shadow-xl border border-gray-200

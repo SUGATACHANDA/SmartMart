@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
 import myContext from "../../context/data/myContext";
 import HeroSection from "../../components/herosection/HeroSection";
@@ -20,6 +20,9 @@ function Home() {
   // const deleteCart = () => {
   //   dispatch(deleteFromCart("shirt"));
   // };
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])  
 
   return (
     <Layout>

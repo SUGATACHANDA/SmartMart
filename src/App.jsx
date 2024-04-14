@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 import Home from "./pages/home/Home";
 import Order from "./pages/order/Order";
@@ -15,8 +15,8 @@ import UpdateProduct from "./pages/admin/pages/UpdateProduct";
 import { ToastContainer } from "react-toastify";
 import Allproducts from "./pages/allProducts/allProduct";
 import PageNotFound from "./pages/nopage/NoPage";
-import Success from "./pages/successPage/Success";
 import PaymentSuccess from "./pages/successPage/Success";
+import PlatinumMember from "./pages/platinumMembers/PlatinumMember";
 function App() {
   return (
     <MyState>
@@ -28,14 +28,13 @@ function App() {
           <Route path="/allproducts" element={<Allproducts />} />          
           <Route path="/dashboard" element={<ProtectedRoutesForAdmin><Dashboard/></ProtectedRoutesForAdmin>} />
           <Route path="/login" element={<Login />} />
-          <Route path="/success" element={<PaymentSuccess />} />
+          <Route path="/buypremium" element={<PlatinumMember/>} />
+          <Route path="/orderconfirmation/:id" element={<PaymentSuccess />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/productinfo/:id" element={<ProductInfo />} />
           <Route path="/addproduct" element={<ProtectedRoutesForAdmin><AddProduct /></ProtectedRoutesForAdmin>} />
           <Route path="/updateproduct" element={<ProtectedRoutesForAdmin><UpdateProduct /></ProtectedRoutesForAdmin>} />
-
           <Route path="/*" element={<PageNotFound />} />
-
         </Routes>
         <ToastContainer/>
       </Router>
@@ -62,5 +61,15 @@ export const ProtectedRoutesForAdmin = ({children}) => {
   }
   else {
     return <Navigate to='/login' />
+  }
+}
+export const ProtectedRoutesForPremium = ({children}) => {
+  const premiumUser = JSON.parse(localStorage.getItem('user'))
+  console.log(premiumUser.user.isPlatinum)
+  if (premiumUser.user.isPlatinum === "False") {
+    return children
+  }
+  else {
+    return <Link to={'/'}/>
   }
 }

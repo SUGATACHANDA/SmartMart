@@ -3,7 +3,7 @@ import React from "react";
 const PageNotFound = () => {
   return (
     <>
-      <link rel="stylesheet" href="src/App.scss" />
+      <link rel="stylesheet" href="src/index.css" />
       {/* <section class="page_404">
         <div class="container">
           <div class="row">
@@ -57,7 +57,7 @@ const PageNotFound = () => {
         </div>
 
     </body> */}
-      <div className="main">
+      <div className="body">
         <div class="mars"></div>
         <img src="https://assets.codepen.io/1538474/404.svg" class="logo-404" />
         <img
@@ -66,7 +66,7 @@ const PageNotFound = () => {
         />
         <p class="title">Oh no!!</p>
         <p class="subtitle">
-          You’re either misspelling the URL <br /> or requesting a page that's
+          You're either misspelling the URL <br /> or requesting a page that's
           no longer here.
         </p>
         <div align="center">
