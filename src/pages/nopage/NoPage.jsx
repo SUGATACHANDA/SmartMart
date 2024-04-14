@@ -71,7 +71,7 @@ const PageNotFound = () => {
         </p>
         <div align="center">
           <a class="btn-back" href="/">
-            Back to previous page
+            Back to Home Page
           </a>
         </div>
         <img
