@@ -109,16 +109,16 @@ function Signup() {
             placeholder="Confirm Password"
           />
         </div>
-        <div className="flex justify-center mb-3">
+{/*         <div className="flex justify-center mb-3">
           <ReCAPTCHA
             theme="dark"
             sitekey="6Lcq97kpAAAAAIqQ0SuPjEVme9PljhPryaH5Uq0T"
             onChange={onChange}
           />
-        </div>
+        </div> */}
         <div className=" flex justify-center mb-3">
           <button
-            disabled={!isCaptchaSuccessful}
+{/*             disabled={!isCaptchaSuccessful} */}
             onClick={signup}
             className=" bg-green-400 w-full text-white font-bold px-2 py-2 rounded-lg disabled:opacity-50"
           >
